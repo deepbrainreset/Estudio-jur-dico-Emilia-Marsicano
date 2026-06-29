@@ -1,0 +1,8 @@
+{
+  "name": "Estudio Jurídico Emilia Marsicano",
+  "description": "Asesoramiento legal integral en Capital Federal y toda Argentina. Especialistas en Derecho Civil, Familia, Comercial, Penal, Animal, Inmobiliario, Gestoría Automotor y Escribanía.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
