@@ -76,7 +76,7 @@ function ServiceCard({ service, index, handleServiceClick }: ServiceCardProps) {
   const desc = t(service.description);
 
   return (
-    <div style={{ perspective: 1200 }} className="h-full py-2">
+    <div id={service.id} style={{ perspective: 1200 }} className="h-full py-2">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

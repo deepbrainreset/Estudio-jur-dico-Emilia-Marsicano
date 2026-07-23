@@ -71,7 +71,7 @@ export default function Footer({ services }: FooterProps) {
               {services.map((service) => (
                 <li key={service.id}>
                   <a
-                    href="#servicios"
+                    href={`#${service.id}`}
                     className="hover:text-primary transition-colors inline-flex items-center gap-1.5"
                   >
                     <span className="text-primary/70">›</span>
