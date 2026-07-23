@@ -62,16 +62,16 @@ export default function Hero({ handleContactClick }: HeroProps) {
             transition={{ duration: 0.8 }}
             className="text-white"
           >
-            {/* SEO-accessible H1 */}
-            <div className="sr-only">
-              <h1>{t("hero.title")}</h1>
-            </div>
+            {/* Visible H1 for Search Engine and Crawler Accessibility */}
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white mb-6 leading-snug tracking-tight">
+              {t("hero.title")}
+            </h1>
 
             {/* Premium Logo Graphic */}
             <img
               src="https://res.cloudinary.com/dyzedavsd/image/upload/v1779715344/Logo_0.0_ujzinn.png"
-              alt="Estudio Jurídico Emilia Marsicano & Escribanía"
-              className="w-full max-w-md sm:max-w-lg h-auto mb-8 filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] object-contain"
+              alt="Estudio Jurídico Emilia Marsicano & Escribanía Abogada en Capital Federal CABA"
+              className="w-full max-w-md sm:max-w-lg h-auto mb-6 filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] object-contain"
               referrerPolicy="no-referrer"
               fetchPriority="high"
             />

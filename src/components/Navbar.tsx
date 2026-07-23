@@ -79,24 +79,41 @@ export default function Navbar({
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <button
-              onClick={() => scrollToSection("inicio")}
+            <a
+              href="#inicio"
+              onClick={(e) => { e.preventDefault(); scrollToSection("inicio"); }}
               className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
             >
               {t("navbar.home")}
-            </button>
-            <button
-              onClick={() => scrollToSection("servicios")}
+            </a>
+            <a
+              href="#servicios"
+              onClick={(e) => { e.preventDefault(); scrollToSection("servicios"); }}
               className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
             >
               {t("navbar.services")}
-            </button>
-            <button
-              onClick={() => scrollToSection("international")}
+            </a>
+            <a
+              href="#international"
+              onClick={(e) => { e.preventDefault(); scrollToSection("international"); }}
               className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
             >
               {t("navbar.international")}
-            </button>
+            </a>
+            <a
+              href="#faq"
+              onClick={(e) => { e.preventDefault(); scrollToSection("faq"); }}
+              className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+            >
+              FAQ
+            </a>
+            <a
+              href="#contacto"
+              onClick={(e) => { e.preventDefault(); scrollToSection("contacto"); }}
+              className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+            >
+              {t("contact.title") || "Contacto"}
+            </a>
 
             {/* Language Dropdown */}
             <div className="relative">
@@ -175,24 +192,41 @@ export default function Navbar({
             className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border"
           >
             <div className="px-4 py-4 space-y-3">
-              <button
-                onClick={() => scrollToSection("inicio")}
-                className="block w-full text-left font-medium text-foreground hover:text-primary py-2"
+              <a
+                href="#inicio"
+                onClick={(e) => { e.preventDefault(); scrollToSection("inicio"); }}
+                className="block w-full text-left font-medium text-foreground hover:text-primary py-2 cursor-pointer"
               >
                 {t("navbar.home")}
-              </button>
-              <button
-                onClick={() => scrollToSection("servicios")}
-                className="block w-full text-left font-medium text-foreground hover:text-primary py-2"
+              </a>
+              <a
+                href="#servicios"
+                onClick={(e) => { e.preventDefault(); scrollToSection("servicios"); }}
+                className="block w-full text-left font-medium text-foreground hover:text-primary py-2 cursor-pointer"
               >
                 {t("navbar.services")}
-              </button>
-              <button
-                onClick={() => scrollToSection("international")}
-                className="block w-full text-left font-medium text-foreground hover:text-primary py-2"
+              </a>
+              <a
+                href="#international"
+                onClick={(e) => { e.preventDefault(); scrollToSection("international"); }}
+                className="block w-full text-left font-medium text-foreground hover:text-primary py-2 cursor-pointer"
               >
                 {t("navbar.international")}
-              </button>
+              </a>
+              <a
+                href="#faq"
+                onClick={(e) => { e.preventDefault(); scrollToSection("faq"); }}
+                className="block w-full text-left font-medium text-foreground hover:text-primary py-2 cursor-pointer"
+              >
+                FAQ
+              </a>
+              <a
+                href="#contacto"
+                onClick={(e) => { e.preventDefault(); scrollToSection("contacto"); }}
+                className="block w-full text-left font-medium text-foreground hover:text-primary py-2 cursor-pointer"
+              >
+                {t("contact.title") || "Contacto"}
+              </a>
 
               {/* Mobile Language Selector */}
               <div className="border-t border-border pt-4 mt-4">
