@@ -5,7 +5,6 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import ServicesSection from "./components/ServicesSection";
 import InternationalSection from "./components/InternationalSection";
-import FAQSection from "./components/FAQSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import ServiceDetailModal from "./components/ServiceDetailModal";
@@ -165,7 +164,6 @@ function MainApp() {
         <Hero handleContactClick={handleContactClick} />
         <ServicesSection services={servicesData} handleServiceClick={setSelectedService} />
         <InternationalSection handleContactClick={handleContactClick} />
-        <FAQSection handleContactClick={handleContactClick} />
         <ContactSection handleContactClick={handleContactClick} />
       </main>
 

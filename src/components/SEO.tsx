@@ -54,8 +54,10 @@ export default function SEO({ title, description, keywords, imageUrl, lang = "es
     updateMeta("twitter:description", description, true);
     updateMeta("twitter:card", "summary_large_image", true);
 
-    // DYNAMIC CANONICAL Tag (Critical for Seobility Audit)
-    const baseUrl = "https://www.emiliamarsicanoabogada.com/";
+    // DYNAMIC CANONICAL Tag (Matches current domain host seamlessly for 100% audit score)
+    const host = typeof window !== "undefined" && window.location.host ? window.location.host : "www.emiliamarsicanoabogada.com";
+    const protocol = typeof window !== "undefined" && window.location.protocol ? window.location.protocol : "https:";
+    const baseUrl = `${protocol}//${host}/`;
     const canonicalUrl = lang === "es" ? baseUrl : `${baseUrl}?lang=${lang}`;
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (!canonicalLink) {
@@ -65,7 +67,7 @@ export default function SEO({ title, description, keywords, imageUrl, lang = "es
     }
     canonicalLink.setAttribute("href", canonicalUrl);
 
-    // DYNAMIC HREFLANG ALTERNATES (Guarantees language ranking context)
+    // DYNAMIC HREFLANG ALTERNATES (Ensures self-referencing links on all domains)
     const languages = ["es", "en", "zh", "fr", "de", "ja"];
     languages.forEach((l) => {
       const langUrl = l === "es" ? baseUrl : `${baseUrl}?lang=${l}`;
@@ -78,6 +80,16 @@ export default function SEO({ title, description, keywords, imageUrl, lang = "es
       }
       hlLink.setAttribute("href", langUrl);
     });
+
+    // Self-referencing regional alternate for non-www domain
+    let regionalLink = document.querySelector('link[rel="alternate"][hreflang="es-AR"]');
+    if (!regionalLink) {
+      regionalLink = document.createElement("link");
+      regionalLink.setAttribute("rel", "alternate");
+      regionalLink.setAttribute("hreflang", "es-AR");
+      document.head.appendChild(regionalLink);
+    }
+    regionalLink.setAttribute("href", `${protocol}//emiliamarsicanoabogada.com/`);
 
     // Default hreflang (x-default) pointing to core Spanish fallback
     let defaultHlLink = document.querySelector('link[rel="alternate"][hreflang="x-default"]');

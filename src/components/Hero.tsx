@@ -1,6 +1,6 @@
-import React from "react";
-import { motion } from "motion/react";
-import { Calendar, Scale, Clock } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Calendar, Clock, X, ZoomIn } from "lucide-react";
 import { useLanguage } from "./LanguageContext";
 
 interface HeroProps {
@@ -9,6 +9,23 @@ interface HeroProps {
 
 export default function Hero({ handleContactClick }: HeroProps) {
   const { t, language } = useLanguage();
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsImageModalOpen(false);
+      }
+    };
+    if (isImageModalOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    };
+  }, [isImageModalOpen]);
 
   const getBadgeText = () => {
     switch (language) {
@@ -62,8 +79,8 @@ export default function Hero({ handleContactClick }: HeroProps) {
             transition={{ duration: 0.8 }}
             className="text-white"
           >
-            {/* Visible H1 for Search Engine and Crawler Accessibility */}
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white mb-6 leading-snug tracking-tight">
+            {/* Elegant, sober and refined H1 Title */}
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-serif font-semibold text-slate-100 mb-6 leading-snug sm:leading-relaxed tracking-wide border-b border-primary/20 pb-4">
               {t("hero.title")}
             </h1>
 
@@ -118,24 +135,86 @@ export default function Hero({ handleContactClick }: HeroProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative flex justify-center lg:justify-end w-full lg:mt-0 mt-8"
           >
-            <div className="relative rounded-2xl overflow-hidden border border-primary/40 shadow-2xl max-w-sm sm:max-w-md w-full aspect-[4/5] bg-slate-900/40">
+            <div
+              onClick={() => setIsImageModalOpen(true)}
+              className="relative rounded-2xl overflow-hidden border border-primary/40 shadow-2xl max-w-sm sm:max-w-md w-full aspect-[4/5] bg-slate-900/40 cursor-pointer group hover:border-primary/80 hover:shadow-[0_0_30px_rgba(212,175,55,0.35)] transition-all duration-300"
+              title="Hacé clic para ampliar la imagen"
+            >
               <img
                 src="https://res.cloudinary.com/dyzedavsd/image/upload/v1779715344/IMG-20250724-WA0008_dlxzk8.jpg"
                 alt="Emilia Marsicano"
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 referrerPolicy="no-referrer"
                 loading="eager"
               />
+              {/* Subtle zoom indicator badge */}
+              <div className="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md border border-primary/40 text-primary p-2.5 rounded-full shadow-xl opacity-90 group-hover:opacity-100 group-hover:scale-110 group-hover:bg-primary group-hover:text-slate-950 transition-all duration-300 flex items-center gap-1.5">
+                <ZoomIn className="w-4 h-4" />
+                <span className="text-xs font-medium font-sans hidden group-hover:inline pr-1">Ampliar</span>
+              </div>
+
               {/* Elegant golden gradient overlays */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end">
-                <span className="text-primary font-serif italic text-lg">{t("footer.servicesTitle") === "Services" ? "Abogada" : "Abogada"}</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end pointer-events-none">
+                <span className="text-primary font-serif italic text-lg">Abogada</span>
                 <span className="text-white font-semibold text-xl tracking-wide">Emilia Marsicano</span>
               </div>
             </div>
           </motion.div>
         </div>
       </div>
+
+      {/* Interactive Lightbox Modal */}
+      <AnimatePresence>
+        {isImageModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md"
+            onClick={() => setIsImageModalOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.25, type: "spring", stiffness: 300, damping: 25 }}
+              className="relative max-w-[90vw] max-h-[90vh] flex flex-col items-center justify-center rounded-2xl overflow-hidden bg-slate-950 border border-primary/40 shadow-2xl p-2 sm:p-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Visible Close Button */}
+              <button
+                type="button"
+                onClick={() => setIsImageModalOpen(false)}
+                aria-label="Cerrar imagen"
+                className="absolute top-3 right-3 z-20 bg-slate-900/90 hover:bg-primary text-white hover:text-slate-950 p-2.5 rounded-full border border-primary/40 transition-all cursor-pointer shadow-xl flex items-center justify-center"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="relative overflow-hidden rounded-xl flex items-center justify-center">
+                <img
+                  src="https://res.cloudinary.com/dyzedavsd/image/upload/v1779715344/IMG-20250724-WA0008_dlxzk8.jpg"
+                  alt="Emilia Marsicano - Abogada"
+                  className="max-w-[85vw] max-h-[75vh] w-auto h-auto object-contain rounded-xl shadow-2xl"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+
+              <div className="w-full text-center py-2.5 px-4 bg-slate-900/90 mt-3 rounded-xl border border-slate-800/80">
+                <p className="text-white font-serif font-semibold text-lg sm:text-xl tracking-wide">
+                  Emilia Marsicano
+                </p>
+                <p className="text-xs sm:text-sm text-primary font-sans font-medium mt-0.5">
+                  Abogada & Escribana | Capital Federal, Argentina
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
+

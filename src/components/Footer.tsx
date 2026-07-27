@@ -49,11 +49,6 @@ export default function Footer({ services }: FooterProps) {
                   </a>
                 </li>
                 <li>
-                  <a href="#faq" className="hover:text-primary transition-colors">
-                    FAQ
-                  </a>
-                </li>
-                <li>
                   <a href="#contacto" className="hover:text-primary transition-colors">
                     {t("contact.title") || "Contacto"}
                   </a>

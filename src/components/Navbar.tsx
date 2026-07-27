@@ -101,13 +101,6 @@ export default function Navbar({
               {t("navbar.international")}
             </a>
             <a
-              href="#faq"
-              onClick={(e) => { e.preventDefault(); scrollToSection("faq"); }}
-              className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
-            >
-              FAQ
-            </a>
-            <a
               href="#contacto"
               onClick={(e) => { e.preventDefault(); scrollToSection("contacto"); }}
               className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
@@ -212,13 +205,6 @@ export default function Navbar({
                 className="block w-full text-left font-medium text-foreground hover:text-primary py-2 cursor-pointer"
               >
                 {t("navbar.international")}
-              </a>
-              <a
-                href="#faq"
-                onClick={(e) => { e.preventDefault(); scrollToSection("faq"); }}
-                className="block w-full text-left font-medium text-foreground hover:text-primary py-2 cursor-pointer"
-              >
-                FAQ
               </a>
               <a
                 href="#contacto"
