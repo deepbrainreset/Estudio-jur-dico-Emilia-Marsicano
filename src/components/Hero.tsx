@@ -71,20 +71,20 @@ export default function Hero({ handleContactClick }: HeroProps) {
       className="relative min-h-screen flex items-center overflow-hidden pt-20"
     >
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 z-10 w-full">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-white"
+            className="text-white lg:col-span-6 xl:col-span-5"
           >
-            {/* Elegant, sober and refined H1 Title */}
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-serif font-semibold text-slate-100 mb-6 leading-snug sm:leading-relaxed tracking-wide border-b border-primary/20 pb-4">
+            {/* Visually hidden H1 for SEO Crawler & Screen Reader Accessibility */}
+            <h1 className="sr-only">
               {t("hero.title")}
             </h1>
 
-            {/* Premium Logo Graphic */}
+            {/* Premium Logo Graphic sitting at the top */}
             <img
               src="https://res.cloudinary.com/dyzedavsd/image/upload/v1779715344/Logo_0.0_ujzinn.png"
               alt="Estudio Jurídico Emilia Marsicano & Escribanía Abogada en Capital Federal CABA"
@@ -128,22 +128,22 @@ export default function Hero({ handleContactClick }: HeroProps) {
             </div>
           </motion.div>
 
-          {/* Right column with professional portrait */}
+          {/* Right column: Banner / Cartel Display occupying hero sector */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex justify-center lg:justify-end w-full lg:mt-0 mt-8"
+            className="relative flex justify-center w-full lg:col-span-6 xl:col-span-7 lg:mt-0 mt-6"
           >
             <div
               onClick={() => setIsImageModalOpen(true)}
-              className="relative rounded-2xl overflow-hidden border border-primary/40 shadow-2xl max-w-sm sm:max-w-md w-full aspect-[4/5] bg-slate-900/40 cursor-pointer group hover:border-primary/80 hover:shadow-[0_0_30px_rgba(212,175,55,0.35)] transition-all duration-300"
-              title="Hacé clic para ampliar la imagen"
+              className="relative rounded-2xl overflow-hidden border border-primary/40 shadow-2xl w-full max-w-2xl lg:max-w-full aspect-[16/10] sm:aspect-[16/9] lg:aspect-[16/10] bg-slate-900/40 cursor-pointer group hover:border-primary/80 hover:shadow-[0_0_35px_rgba(212,175,55,0.35)] transition-all duration-300"
+              title="Hacé clic para ampliar el cartel"
             >
               <img
                 src="https://res.cloudinary.com/dyzedavsd/image/upload/v1779715344/IMG-20250724-WA0008_dlxzk8.jpg"
-                alt="Emilia Marsicano"
-                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                alt="Cartel Estudio Jurídico Emilia Marsicano"
+                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 referrerPolicy="no-referrer"
                 loading="eager"
               />
@@ -153,11 +153,11 @@ export default function Hero({ handleContactClick }: HeroProps) {
                 <span className="text-xs font-medium font-sans hidden group-hover:inline pr-1">Ampliar</span>
               </div>
 
-              {/* Elegant golden gradient overlays */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
-              <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end pointer-events-none">
-                <span className="text-primary font-serif italic text-lg">Abogada</span>
-                <span className="text-white font-semibold text-xl tracking-wide">Emilia Marsicano</span>
+              {/* Golden gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end pointer-events-none">
+                <span className="text-primary font-serif italic text-sm sm:text-base">Estudio Jurídico & Escribanía</span>
+                <span className="text-white font-semibold text-lg sm:text-xl tracking-wide">Emilia Marsicano</span>
               </div>
             </div>
           </motion.div>
