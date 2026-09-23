@@ -29,3 +29,7 @@ dialog{max-height:90vh}#serviceModal>div{padding:38px 45px;overflow:auto}.modal-
 .card img{display:block!important;position:relative!important;inset:auto!important;width:100%!important;height:auto!important;aspect-ratio:auto!important;object-fit:initial!important;object-position:initial!important;background:transparent!important;flex:none!important;transform:none!important}
 .card-body{display:flex!important;position:relative!important;inset:auto!important;width:100%!important;height:auto!important;min-height:155px!important;flex:1!important;padding:14px 12px!important;background:linear-gradient(180deg,#0b0907,#050403)!important;border-top:1px solid rgba(205,157,76,.35)!important}
 #serviceModal>img{object-fit:contain;background:#050403}
+
+/* Final responsive hero typography: keep headline phrases together on desktop and tablet. */
+@media(min-width:1001px){.hero-copy{width:520px}.hero h1{font-size:47px;line-height:.94;max-width:520px;text-wrap:balance}}
+@media(min-width:651px) and (max-width:1000px){.hero-copy{width:min(560px,calc(100% - 44px));margin-left:22px}.hero h1{font-size:43px;line-height:.96;max-width:560px;text-wrap:balance}}
