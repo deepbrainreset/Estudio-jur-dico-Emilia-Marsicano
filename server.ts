@@ -73,6 +73,12 @@ function isPayPalConfigured() {
   return !!(process.env.PAYPAL_CLIENT_ID && process.env.PAYPAL_CLIENT_SECRET);
 }
 
+function getPayPalApiBase() {
+  return process.env.PAYPAL_MODE === "live"
+    ? "https://api-m.paypal.com"
+    : "https://api-m.sandbox.paypal.com";
+}
+
 async function getPayPalAccessToken(): Promise<string | null> {
   const clientId = process.env.PAYPAL_CLIENT_ID;
   const secret = process.env.PAYPAL_CLIENT_SECRET;
@@ -80,7 +86,7 @@ async function getPayPalAccessToken(): Promise<string | null> {
 
   try {
     const auth64 = Buffer.from(`${clientId}:${secret}`).toString("base64");
-    const response = await fetch("https://api-m.sandbox.paypal.com/v1/oauth2/token", {
+    const response = await fetch(`${getPayPalApiBase()}/v1/oauth2/token`, {
       method: "POST",
       headers: {
         Authorization: `Basic ${auth64}`,
@@ -136,7 +142,7 @@ app.post("/api/payments/create", async (req, res) => {
           items: [
             {
               id: "consulta-legal",
-              title: "Consulta Legal con Abogada Emilsen Marsicano",
+              title: "Consulta Legal con Abogada Emilia Marsicano",
               quantity: 1,
               unit_price: 50000,
               currency_id: "ARS"
@@ -179,7 +185,7 @@ app.post("/api/payments/create", async (req, res) => {
                   currency_code: "USD",
                   value: "50.00"
                 },
-                description: "Consulta Legal con Abogada Emilsen Marsicano"
+                description: "Consulta Legal con Abogada Emilia Marsicano"
               }
             ],
             application_context: {
@@ -188,7 +194,7 @@ app.post("/api/payments/create", async (req, res) => {
             }
           };
 
-          const pResponse = await fetch("https://api-m.sandbox.paypal.com/v2/checkout/orders", {
+          const pResponse = await fetch(`${getPayPalApiBase()}/v2/checkout/orders`, {
             method: "POST",
             headers: {
               Authorization: `Bearer ${token}`,
@@ -331,7 +337,7 @@ app.get("/api/payments/paypal-return", async (req, res) => {
   try {
     const accessToken = await getPayPalAccessToken();
     if (accessToken && token) {
-      const captureResponse = await fetch(`https://api-m.sandbox.paypal.com/v2/checkout/orders/${token}/capture`, {
+      const captureResponse = await fetch(`${getPayPalApiBase()}/v2/checkout/orders/${token}/capture`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${accessToken}`,
