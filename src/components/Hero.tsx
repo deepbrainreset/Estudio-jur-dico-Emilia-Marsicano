@@ -141,7 +141,7 @@ export default function Hero({ handleContactClick }: HeroProps) {
               title="Hacé clic para ampliar el cartel"
             >
               <img
-                src="https://res.cloudinary.com/dyzedavsd/image/upload/v1779715344/IMG-20250724-WA0008_dlxzk8.jpg"
+                src="/assets/hero.png?v=hero-20260923"
                 alt="Cartel Estudio Jurídico Emilia Marsicano"
                 className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 referrerPolicy="no-referrer"
@@ -195,7 +195,7 @@ export default function Hero({ handleContactClick }: HeroProps) {
 
               <div className="relative overflow-hidden rounded-xl flex items-center justify-center">
                 <img
-                  src="https://res.cloudinary.com/dyzedavsd/image/upload/v1779715344/IMG-20250724-WA0008_dlxzk8.jpg"
+                  src="/assets/hero.png?v=hero-20260923"
                   alt="Emilia Marsicano - Abogada"
                   className="max-w-[85vw] max-h-[75vh] w-auto h-auto object-contain rounded-xl shadow-2xl"
                   referrerPolicy="no-referrer"
@@ -217,4 +217,3 @@ export default function Hero({ handleContactClick }: HeroProps) {
     </section>
   );
 }
-

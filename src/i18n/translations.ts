@@ -1035,11 +1035,35 @@ const ja: TranslationDict = {
   }
 };
 
+// Portuguese and Italian preserve the complete information architecture and use
+// localized primary UI copy; nested legal details remain available through the
+// Spanish source until reviewed by a native legal translator.
+const pt: TranslationDict = {
+  ...es,
+  navbar: { ...es.navbar, home: "Início", services: "Serviços", international: "Atendimento internacional", bookConsultation: "Agendar consulta", language: "Português" },
+  hero: { ...es.hero, title: "Escritório Jurídico Emilia Marsicano | Buenos Aires, Argentina", subtitle: "Assessoria e representação jurídica para clientes de todo o mundo sob as leis argentinas. Profissionalismo, empatia e proteção dos seus direitos.", button: "Agendar consulta" },
+  services: { ...es.services, title: "Áreas de atuação jurídica na Argentina", subtitle: "Serviços jurídicos especializados e gestão automotiva em Buenos Aires.", detailsButton: "Ver detalhes" },
+  international: { ...es.international, title: "Assistência jurídica na Argentina para quem está no exterior", paragraph1: "Sucessões, imóveis, contratos, procurações, cobranças e documentação argentina com atendimento remoto.", paragraph2: "Coordenação clara em português, sem necessidade de viajar para iniciar a consulta.", button: "Agendar consulta" },
+  contact: { ...es.contact, title: "Fale sobre o seu caso", subtitle: "Atendimento remoto para clientes na Argentina e no exterior.", button: "Entrar em contato" },
+  seo: { ...es.seo, title: "Advogada na Argentina para clientes do exterior | Emilia Marsicano", description: "Assessoria jurídica na Argentina para clientes no exterior, com atendimento remoto em português.", keywords: "advogada Argentina exterior, sucessão Argentina, imóveis Argentina, procuração Argentina, assessoria jurídica internacional" }
+};
+const it: TranslationDict = {
+  ...es,
+  navbar: { ...es.navbar, home: "Home", services: "Servizi", international: "Assistenza internazionale", bookConsultation: "Prenota una consulenza", language: "Italiano" },
+  hero: { ...es.hero, title: "Studio Legale Emilia Marsicano | Buenos Aires, Argentina", subtitle: "Consulenza e rappresentanza legale per clienti di tutto il mondo secondo il diritto argentino. Professionalità, empatia e tutela dei tuoi diritti.", button: "Prenota una consulenza" },
+  services: { ...es.services, title: "Aree di attività legale in Argentina", subtitle: "Servizi legali specializzati e pratiche automobilistiche a Buenos Aires.", detailsButton: "Vedi dettagli" },
+  international: { ...es.international, title: "Assistenza legale in Argentina per chi vive all’estero", paragraph1: "Successioni, immobili, contratti, procure, recupero crediti e documenti argentini con assistenza a distanza.", paragraph2: "Coordinamento chiaro in italiano, senza dover viaggiare per iniziare la consulenza.", button: "Prenota una consulenza" },
+  contact: { ...es.contact, title: "Parliamo del tuo caso", subtitle: "Assistenza a distanza per clienti in Argentina e all’estero.", button: "Contattaci" },
+  seo: { ...es.seo, title: "Avvocata in Argentina per clienti dall’estero | Emilia Marsicano", description: "Consulenza legale in Argentina per clienti all’estero, con assistenza remota in italiano.", keywords: "avvocata Argentina estero, successione Argentina, immobili Argentina, procura Argentina, assistenza legale internazionale" }
+};
+
 export const translations: { [key: string]: TranslationDict } = {
   es,
   en,
   zh,
   fr,
   de,
-  ja
+  ja,
+  pt,
+  it
 };

@@ -16,7 +16,9 @@ const languagesList = [
   { code: "zh", name: "中文", flag: "🇨🇳" },
   { code: "fr", name: "Français", flag: "🇫🇷" },
   { code: "de", name: "Deutsch", flag: "🇩🇪" },
-  { code: "ja", name: "日本語", flag: "🇯🇵" }
+  { code: "ja", name: "日本語", flag: "🇯🇵" },
+  { code: "pt", name: "Português", flag: "🇧🇷" },
+  { code: "it", name: "Italiano", flag: "🇮🇹" }
 ];
 
 export default function Navbar({
@@ -40,6 +42,10 @@ export default function Navbar({
         return "Anwältin, Notarin & Kfz-Abwicklung";
       case "ja":
         return "弁護士・公証人・自動車登録手続代行";
+      case "pt":
+        return "Advogada, Notária e Gestora Automotiva";
+      case "it":
+        return "Avvocata, Notaia e Pratiche Automobilistiche";
       case "es":
       default:
         return "Abogada, Escribana y Gestoría del Automotor";
