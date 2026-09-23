@@ -48,3 +48,8 @@ dialog{max-height:90vh}#serviceModal>div{padding:38px 45px;overflow:auto}.modal-
 /* No-crop mode: preserve the complete hero artwork at every viewport. */
 .hero>img{object-fit:contain!important;object-position:center center!important;background:#050403!important}
 @media(max-width:650px){.hero>img{object-fit:contain!important;object-position:center center!important;background:#050403!important}}
+
+/* Restore original image alignment for hero and About artwork. */
+.hero>img{object-position:0% 0%!important}
+.about-photo img{object-position:0% 0%!important;transform:none!important}
+@media(max-width:650px){.hero>img{object-position:0% 0%!important}.about-photo img{object-position:0% 0%!important;transform:none!important}}
