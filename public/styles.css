@@ -13,3 +13,8 @@
 dialog{max-height:90vh}#serviceModal>div{padding:38px 45px;overflow:auto}.modal-detail{border-top:1px solid var(--line);margin-top:10px;padding-top:14px}.modal-detail h3{color:var(--gold2);font:600 16px 'Cormorant Garamond',serif;text-transform:uppercase;letter-spacing:.06em;margin:10px 0 5px}.modal-detail p,.modal-detail li{color:var(--muted);font-size:12px;line-height:1.55}.modal-detail p{margin:0}.modal-detail ul{display:grid;grid-template-columns:1fr 1fr;gap:5px 18px;margin:5px 0 0;padding-left:18px}.modal-detail li::marker{color:var(--gold)}
 @media(max-width:650px){#serviceModal>div{padding:26px 22px}.modal-detail ul{grid-template-columns:1fr}}
 .payment-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0}.payment-tabs button{padding:12px;border:1px solid var(--line);background:#12100e;color:var(--muted);cursor:pointer}.payment-tabs button.active{background:var(--gold);color:#080706;font-weight:700}.account-name{color:var(--muted);font-size:12px;margin:8px 0 18px}.payment-action{display:block;text-align:center}.paybox form label{margin:12px 0}.paybox form input{width:100%;font-size:16px}.paybox button:disabled{opacity:.55;cursor:wait}#paymentError{color:#e2b26b;margin-top:14px}#paymentError a{color:var(--gold2)}[hidden]{display:none!important}
+
+/* Render each practice image at its natural 3:4 ratio: no crop and no empty image box. */
+.card img{display:block;position:relative;width:100%;height:auto;aspect-ratio:auto;object-fit:initial;object-position:initial;background:transparent;flex:none}
+.card:hover img{transform:none}
+#serviceModal>img{object-fit:contain;background:#050403}
