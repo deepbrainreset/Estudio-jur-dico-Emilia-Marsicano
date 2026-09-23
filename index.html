@@ -10,10 +10,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260923-2" />
-  <style id="practice-image-fix">
-    .card img{display:block!important;position:relative!important;width:100%!important;height:auto!important;aspect-ratio:auto!important;object-fit:initial!important;object-position:initial!important;background:transparent!important;flex:none!important}
-    .card:hover img{transform:none!important}
+  <link rel="stylesheet" href="styles.css?v=20260923-3" />
+  <style id="practice-card-layout-fix">
+    .card{display:flex!important;flex-direction:column!important;min-height:0!important;height:auto!important;overflow:hidden!important}
+    .card::after{display:none!important}
+    .card img{display:block!important;position:relative!important;inset:auto!important;width:100%!important;height:auto!important;aspect-ratio:auto!important;object-fit:initial!important;object-position:initial!important;background:transparent!important;flex:none!important;transform:none!important}
+    .card-body{display:flex!important;position:relative!important;inset:auto!important;width:100%!important;height:auto!important;min-height:155px!important;flex:1!important;padding:14px 12px!important;background:linear-gradient(180deg,#0b0907,#050403)!important;border-top:1px solid rgba(205,157,76,.35)!important}
     #serviceModal>img{object-fit:contain!important;background:#050403}
   </style>
 </head>
@@ -25,6 +27,7 @@
     <div class="actions"><select id="lang" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option><option value="pt">PT</option></select><a class="pill" href="#consulta" data-i="book">RESERVAR CONSULTA</a></div>
   </header>
 
+
   <main>
     <section class="hero" id="inicio">
       <img src="assets/hero.png" alt="Emilia Marsicano en su estudio jurídico" />
@@ -33,21 +36,29 @@
       <aside class="hero-manifesto"><p>LEY</p><p>PERSONAS</p><p>SOLUCIONES</p><p>CONFIANZA</p><p>TU TRANQUILIDAD</p><blockquote>“El derecho no es solo una profesión, es una forma de estar del lado de las personas.”</blockquote><em>Emilia Marsicano</em></aside>
     </section>
 
+
     <section class="intro" id="areas"><h2 data-i="practiceTitle">Áreas de práctica</h2><p data-i="practiceText">Soluciones legales para cada etapa de tu vida</p><aside>DISTINTAS REALIDADES<br>UN MISMO COMPROMISO</aside></section>
     <section class="cards" id="cards"></section>
 
+
     <section class="about" id="estudio"><div class="about-photo"><img src="assets/hero.png" alt="Retrato de Emilia Marsicano" /></div><div class="about-copy"><p class="eyebrow" data-i="aboutEye">SOBRE MÍ</p><h2 data-i="aboutTitle">Emilia Marsicano <small>ABOGADA</small></h2><p data-i="aboutText">Creo en un ejercicio del derecho cercano, claro y humano. Mi objetivo es brindarte asesoramiento legal con compromiso, escucha activa y una mirada estratégica, para que te sientas acompañado/a en todo el proceso.</p><a href="#consulta" class="gold" data-i="aboutCta">CONOCÉ MÁS SOBRE MÍ →</a></div><aside><p>ESCUCHAR</p><p>COMPRENDER</p><p>ANALIZAR</p><p>ACOMPAÑAR</p><p>ENCONTRAR SOLUCIONES</p><em>Emilia Marsicano</em></aside></section>
+
 
     <section class="process" id="proceso"><div class="section-title"><h2 data-i="processTitle">Tu consulta, paso a paso</h2><p data-i="processSub">Un proceso simple, transparente y a tu lado</p></div><div class="steps"><article><b>1</b><span>▢</span><h3 data-i="step1t">Consulta inicial</h3><p data-i="step1p">Me contás tu situación. Escucho y analizo tus necesidades.</p></article><i>→</i><article><b>2</b><span>▤</span><h3 data-i="step2t">Análisis del caso</h3><p data-i="step2p">Evalúo tu caso con una mirada estratégica y te explico las opciones.</p></article><i>→</i><article><b>3</b><span>◎</span><h3 data-i="step3t">Estrategia y seguimiento</h3><p data-i="step3p">Diseñamos el mejor camino y te acompaño en cada etapa.</p></article></div></section>
 
+
     <section class="faq" id="faq"><div class="section-title"><h2 data-i="faqTitle">Preguntas frecuentes</h2><p data-i="faqSub">Respuestas a las dudas más comunes</p></div><div class="faq-grid"><details><summary data-i="q1">¿Cómo es la primera consulta?</summary><p data-i="a1">Es un espacio para que me cuentes tu situación, analice tu caso y te brinde una primera orientación.</p></details><details><summary data-i="q2">¿Qué documentación tengo que llevar?</summary><p data-i="a2">Depende del caso. Te indicaré qué documentos son necesarios al momento de coordinar la consulta.</p></details><details><summary data-i="q3">¿La consulta es presencial o virtual?</summary><p data-i="a3">Podés consultarme de forma presencial u online, según tu comodidad y disponibilidad.</p></details><details><summary data-i="q4">¿Atendés a personas que viven en el exterior?</summary><p data-i="a4">Sí. Brindo asesoramiento legal en Argentina a personas que se encuentran en el exterior.</p></details></div><aside>LAS PREGUNTAS<br>TAMBIÉN SON<br>EL PRIMER PASO</aside></section>
+
 
     <section class="consult" id="consulta"><div><h2 data-i="consultTitle">Hablemos de tu caso</h2><p data-i="consultText">Tu tranquilidad también es un derecho.</p></div><button id="startPay" class="gold" data-i="pay">SOLICITAR CONSULTA →</button><aside>UN MEJOR MAÑANA<br>TAMBIÉN ES POSIBLE</aside></section>
   </main>
 
+
   <footer><div class="brand"><span class="brand-mark">EM</span><span>EMILIA MARSICANO<small>ABOGADA</small></span></div><nav><a href="#inicio">INICIO</a><a href="#estudio">SOBRE MÍ</a><a href="#areas">ÁREAS DE PRÁCTICA</a><a href="#proceso">CÓMO TRABAJO</a><a href="#faq">PREGUNTAS FRECUENTES</a><a href="#consulta">CONTACTO</a></nav><p>© 2026 Emilia Marsicano. Todos los derechos reservados.</p></footer>
+
 
   <dialog id="serviceModal"><button class="close" aria-label="Cerrar">×</button><img id="modalImg" alt="" /><div><p class="eyebrow" data-i="practiceEyebrow">ÁREA DE PRÁCTICA</p><h2 id="modalTitle"></h2><p id="modalText"></p><section class="modal-detail"><h3 data-i="whoTitle">¿A quién puede ayudar?</h3><p id="modalWho"></p><h3 data-i="includesTitle">¿En qué puede ayudarte?</h3><ul id="modalList"></ul></section><button class="gold modalCta" data-i="ask">CONSULTAR POR ESTA ÁREA</button></div></dialog>
   <dialog id="payment"><button class="close" aria-label="Cerrar">×</button><div class="paybox"><p class="eyebrow" data-i="secure">CONSULTA INICIAL</p><h2 data-i="payTitle">Reservá tu consulta</h2><div class="payment-tabs" role="tablist"><button id="localTab" class="active" type="button" data-i="argentina">ARGENTINA</button><button id="internationalTab" type="button" data-i="outside">EXTERIOR</button></div><div id="localPayment"><div class="sum"><span data-i="initialConsult">Consulta Jurídica Inicial</span><b>ARS $50.000</b></div><p data-i="transfer">Realizá la transferencia al siguiente CVU:</p><button class="cvu" data-copy="0000003100092578176210">0000003100092578176210 <span>⧉</span></button><p class="account-name" data-i="accountName">Titular: María Emilia Marsicano</p><a id="sendReceipt" class="gold payment-action" target="_blank" rel="noopener" href="https://wa.me/5491165600000" data-i="sendReceipt">ENVIAR COMPROBANTE POR WHATSAPP</a><p class="fine" data-i="localNote">Una vez realizada la transferencia, enviá el comprobante para coordinar la consulta.</p></div><form id="internationalPayment" hidden><div class="sum"><span data-i="initialConsult">Consulta Jurídica Inicial</span><b>USD $50</b></div><p data-i="internationalText">Completá tus datos para continuar al pago internacional seguro.</p><label><span data-i="name">Nombre y apellido</span><input id="payerName" required autocomplete="name"></label><label><span data-i="email">Correo electrónico</span><input id="payerEmail" type="email" required autocomplete="email"></label><label><span data-i="phone">Teléfono con código de país</span><input id="payerPhone" type="tel" required autocomplete="tel"></label><button id="internationalPay" type="submit" class="gold" data-i="payInternational">PAGAR USD 50</button><p id="paymentError" class="fine" role="alert"></p></form></div></dialog>
   <script src="app.js"></script>
 </body></html>
+
