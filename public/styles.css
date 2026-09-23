@@ -53,3 +53,10 @@ dialog{max-height:90vh}#serviceModal>div{padding:38px 45px;overflow:auto}.modal-
 .hero>img{object-position:0% 0%!important}
 .about-photo img{object-position:0% 0%!important;transform:none!important}
 @media(max-width:650px){.hero>img{object-position:0% 0%!important}.about-photo img{object-position:0% 0%!important;transform:none!important}}
+
+
+/* Final fix: show Emilia's complete About portrait on every viewport. */
+.about{height:auto!important;min-height:0!important;overflow:visible!important;align-items:start!important}
+.about-photo{height:auto!important;min-height:0!important;overflow:hidden!important;background:#090807!important;display:flex!important;align-items:flex-start!important}
+.about-photo img{display:block!important;width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;object-position:center!important;transform:none!important}
+@media(max-width:650px){.about-photo{height:auto!important;min-height:0!important}.about-photo img{width:100%!important;height:auto!important;object-fit:contain!important}}
