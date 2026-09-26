@@ -11,20 +11,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=hero-layout-fix-20260923" />
-  <style id="practice-card-layout-fix">
-    .card{display:flex!important;flex-direction:column!important;min-height:0!important;height:auto!important;overflow:hidden!important}
-    .card::after{display:none!important}
-    .card img{display:block!important;position:relative!important;inset:auto!important;width:100%!important;height:auto!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center!important;background:#050403!important;flex:none!important;transform:none!important}
-    .card-body{display:flex!important;position:relative!important;inset:auto!important;width:100%!important;height:auto!important;min-height:155px!important;flex:1!important;padding:14px 12px!important;background:linear-gradient(180deg,#0b0907,#050403)!important;border-top:1px solid rgba(205,157,76,.35)!important}
-    #serviceModal>img{object-fit:contain!important;background:#050403}
-  </style>
 </head>
 <body>
   <header class="nav" id="nav">
     <a class="brand" href="#inicio" aria-label="Inicio"><img class="brand-logo" src="assets/logo-horizontal.jpg?v=logo-20260923" alt="Emilia Marsicano" /></a>
     <button class="menu" id="menu" aria-label="Abrir menú">☰</button>
     <nav id="navlinks"><a href="#inicio" data-i="navHome">INICIO</a><a href="#estudio" data-i="navAbout">SOBRE MÍ</a><a href="#areas" data-i="navAreas">ÁREAS DE PRÁCTICA</a><a href="#proceso" data-i="navProcess">CÓMO TRABAJO</a><a href="#faq" data-i="navFaq">PREGUNTAS FRECUENTES</a><a href="#consulta" data-i="navContact">CONTACTO</a></nav>
-    <div class="actions"><select id="lang" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option><option value="pt">PT</option><option value="zh">中文</option><option value="fr">FR</option><option value="de">DE</option><option value="ja">日本語</option><option value="it">IT</option></select><a class="pill" href="#consulta" data-i="book">RESERVAR CONSULTA</a></div>
+    <div class="actions"><label class="language-picker" for="lang"><span aria-hidden="true">🌐</span><span class="sr-only">Idioma</span><select id="lang" aria-label="Idioma"><option value="es">🇦🇷 ES — Español</option><option value="en">🇬🇧 EN — English</option><option value="pt">🇧🇷 PT — Português</option><option value="zh">🇨🇳 中文 — 中文</option><option value="fr">🇫🇷 FR — Français</option><option value="de">🇩🇪 DE — Deutsch</option><option value="ja">🇯🇵 日本語 — 日本語</option><option value="it">🇮🇹 IT — Italiano</option></select></label><a class="pill" href="#consulta" data-i="book">RESERVAR CONSULTA</a></div>
   </header>
 
   <main>
