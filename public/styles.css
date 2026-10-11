@@ -78,3 +78,22 @@ dialog{max-height:90vh}#serviceModal>div{padding:38px 45px;overflow:auto}.modal-
 .about-photo{display:flex!important;align-items:center!important;justify-content:center!important;min-width:0!important;overflow:visible!important;background:#090807!important}
 .about-photo img{display:block!important;position:static!important;inset:auto!important;width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:50% 50%!important;transform:none!important;translate:none!important;scale:none!important;margin:0 auto!important;clip-path:none!important}
 @media(max-width:650px){.about-photo{width:100%!important;height:auto!important;min-height:0!important}.about-photo img{width:100%!important;height:auto!important}}
+
+/* Unified mobile layout for Chrome and embedded browsers; viewport-driven, not user-agent driven. */
+html,body{max-width:100%;overflow-x:clip}
+@media(max-width:650px){
+ .nav{width:100%;max-width:100%;gap:8px}
+ .hero{height:auto!important;min-height:680px!important;display:flex!important;align-items:flex-end!important;overflow:hidden!important}
+ .hero>img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:66% center!important}
+ .hero-shade{position:absolute!important;inset:0!important;background:linear-gradient(0deg,rgba(5,4,3,.98) 0%,rgba(5,4,3,.9) 36%,rgba(5,4,3,.18) 78%)!important}
+ .hero-copy{position:relative!important;align-self:flex-end!important;margin:0!important;padding:280px 20px 36px!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important}
+ .hero h1{font-size:clamp(32px,8vw,46px)!important;line-height:1!important;overflow-wrap:break-word}
+ .hero-buttons{flex-wrap:wrap!important}
+ .cards{grid-template-columns:minmax(0,1fr)!important;padding:0 12px 18px!important;gap:14px!important}
+ .cards .card{min-width:0!important;max-width:100%!important;height:auto!important}
+ .cards .card img{width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center!important}
+ .about{display:flex!important;flex-direction:column!important;grid-template-columns:none!important;height:auto!important;overflow:visible!important}
+ .about-photo{width:100%!important;min-height:0!important;height:auto!important;overflow:visible!important}
+ .about-photo img{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;object-position:center!important;transform:none!important}
+ .about-copy{width:100%!important;padding:24px 20px!important}
+}
