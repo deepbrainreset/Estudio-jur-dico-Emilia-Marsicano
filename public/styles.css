@@ -5,7 +5,7 @@
 /* Las portadas conservan el aspect ratio original 45:64. */
 .card{display:flex;flex-direction:column;min-height:0}
 .card:after{display:none}
-.card img{position:relative;width:100%;height:auto;aspect-ratio:45/64;object-fit:contain;object-position:center;background:#050403;flex:none}
+.card img{display:block;position:relative;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;object-position:center;background:#050403;flex:none}
 .card-body{position:relative;bottom:auto;height:auto;min-height:145px;flex:1;background:linear-gradient(180deg,#0b0907,#050403);border-top:1px solid rgba(205,157,76,.35)}
 .card h3{margin-top:2px}
 @media(max-width:1000px){.card{min-height:0}.card-body{min-height:150px}}
@@ -34,66 +34,38 @@ dialog{max-height:90vh}#serviceModal>div{padding:38px 45px;overflow:auto}.modal-
 @media(min-width:1001px){.hero-copy{width:520px}.hero h1{font-size:47px;line-height:.94;max-width:520px;text-wrap:balance}}
 @media(min-width:651px) and (max-width:1000px){.hero-copy{width:min(560px,calc(100% - 44px));margin-left:22px}.hero h1{font-size:43px;line-height:.96;max-width:560px;text-wrap:balance}}
 
-/* Preserve Emilia's complete original portrait at every viewport size. */
-.about{height:auto;min-height:245px}
-.about-photo{display:flex;align-items:center;justify-content:center;min-width:0;background:#090807;overflow:hidden}
-.about-photo img{display:block;position:static;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center center;transform:none!important;filter:none}
+
+/* Canonical layout rules: one responsive system for both browsers. */
+html,body{width:100%;max-width:100%;overflow-x:clip}
+.cards{grid-template-columns:repeat(5,minmax(0,1fr))}
+.card{display:flex;flex-direction:column;min-width:0;height:auto;overflow:hidden}
+.card img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;object-position:center;transform:none}
+.card-body{display:flex;flex-direction:column;min-height:145px;flex:1}
+.about{height:auto;min-height:245px;grid-template-columns:minmax(0,38%) minmax(0,42%) minmax(0,20%);overflow:visible}
+.about-photo{display:flex;align-items:center;justify-content:center;min-width:0;overflow:visible;background:#090807}
+.about-photo img{display:block;position:static;width:100%;height:auto;max-width:100%;max-height:none;object-fit:contain;object-position:center;transform:none;filter:none}
 .about-copy{min-width:0}
-@media(max-width:900px){
-  .about{height:auto;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}
-  .about aside{grid-column:1/-1;margin:0 18px 18px}
-  .about-photo img{height:auto;max-height:none;object-fit:contain}
+@media(max-width:1000px){
+ .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .about{grid-template-columns:minmax(0,38%) minmax(0,62%)}
+ .about aside{display:none}
 }
 @media(max-width:650px){
-  .about{display:flex;flex-direction:column;height:auto}
-  .about-photo{width:100%;height:auto}
-  .about-photo img{width:100%;height:auto;max-height:none;object-fit:contain;transform:none!important}
-  .about-copy{padding:24px 20px}
-  .about aside{margin:0 20px 20px}
-}
-
-/* 2026-10-11: enforce portrait service cards across mobile browsers. */
-@media (max-width: 650px) {
-  .cards { display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important; }
-  .card { display:flex!important;flex-direction:column!important;width:100%!important;min-width:0!important;height:auto!important; }
-  .card img { display:block!important;position:static!important;inset:auto!important;width:100%!important;height:auto!important;max-width:100%!important;aspect-ratio:auto!important;object-fit:contain!important;transform:none!important; }
-  .card-body { display:flex!important;flex-direction:column!important;position:static!important;inset:auto!important;width:100%!important;height:auto!important;min-height:0!important;gap:8px!important;padding:16px!important; }
-  .card h3 { font-size:clamp(20px,6vw,28px)!important;line-height:1.15!important; }
-  .card p { font-size:14px!important;line-height:1.5!important; }
-  .card button { display:block!important;align-self:stretch!important;width:100%!important;min-height:44px!important;margin-top:12px!important;padding:12px 16px!important;border:1px solid var(--gold)!important;background:transparent!important;color:var(--cream)!important;border-radius:24px!important;font-size:12px!important; }
-  .about-photo { height:auto!important; }
-  .about-photo img { width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;transform:none!important; }
-}
-
-/* Responsive integrity: keep complete images visible without oversized cards. */
-@media(max-width:650px){
- .cards .card{min-width:0!important;width:100%!important;overflow:hidden!important}
- .cards .card img{display:block!important;position:relative!important;width:100%!important;height:clamp(220px,68vw,330px)!important;max-height:330px!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center!important;background:#080706!important;transform:none!important}
- .cards .card-body{position:relative!important;height:auto!important;min-height:0!important;padding:16px!important}
- .nav{overflow:visible!important}
- .nav nav.open{visibility:visible!important}
-}
-
-/* About portrait: show the entire original image, centered at all breakpoints. */
-.about-photo{display:flex!important;align-items:center!important;justify-content:center!important;min-width:0!important;overflow:visible!important;background:#090807!important}
-.about-photo img{display:block!important;position:static!important;inset:auto!important;width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:50% 50%!important;transform:none!important;translate:none!important;scale:none!important;margin:0 auto!important;clip-path:none!important}
-@media(max-width:650px){.about-photo{width:100%!important;height:auto!important;min-height:0!important}.about-photo img{width:100%!important;height:auto!important}}
-
-/* Unified mobile layout for Chrome and embedded browsers; viewport-driven, not user-agent driven. */
-html,body{max-width:100%;overflow-x:clip}
-@media(max-width:650px){
- .nav{width:100%;max-width:100%;gap:8px}
- .hero{height:auto!important;min-height:680px!important;display:flex!important;align-items:flex-end!important;overflow:hidden!important}
- .hero>img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:66% center!important}
- .hero-shade{position:absolute!important;inset:0!important;background:linear-gradient(0deg,rgba(5,4,3,.98) 0%,rgba(5,4,3,.9) 36%,rgba(5,4,3,.18) 78%)!important}
- .hero-copy{position:relative!important;align-self:flex-end!important;margin:0!important;padding:280px 20px 36px!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important}
- .hero h1{font-size:clamp(32px,8vw,46px)!important;line-height:1!important;overflow-wrap:break-word}
- .hero-buttons{flex-wrap:wrap!important}
- .cards{grid-template-columns:minmax(0,1fr)!important;padding:0 12px 18px!important;gap:14px!important}
- .cards .card{min-width:0!important;max-width:100%!important;height:auto!important}
- .cards .card img{width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center!important}
- .about{display:flex!important;flex-direction:column!important;grid-template-columns:none!important;height:auto!important;overflow:visible!important}
- .about-photo{width:100%!important;min-height:0!important;height:auto!important;overflow:visible!important}
- .about-photo img{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;object-position:center!important;transform:none!important}
- .about-copy{width:100%!important;padding:24px 20px!important}
+ .nav{width:100%;gap:8px}
+ .cards{grid-template-columns:minmax(0,1fr);gap:14px;padding:0 12px 18px}
+ .card{width:100%;min-height:0}
+ .card img{width:100%;height:auto;max-height:none;aspect-ratio:auto;object-fit:contain}
+ .card-body{position:relative;inset:auto;height:auto;min-height:0;padding:16px}
+ .card h3{font-size:clamp(20px,6vw,28px);line-height:1.15}
+ .card p{font-size:14px;line-height:1.5}
+ .card button{min-height:44px;margin-top:auto}
+ .about{display:flex;flex-direction:column;height:auto;min-height:0}
+ .about-photo{width:100%;height:auto;min-height:0}
+ .about-photo img{width:100%;height:auto;max-height:none}
+ .about-copy{width:100%;padding:24px 20px}
+ .hero{height:auto;min-height:680px;align-items:flex-end;overflow:hidden}
+ .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:66% center}
+ .hero-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,4,3,.98) 0%,rgba(5,4,3,.9) 36%,rgba(5,4,3,.18) 78%)}
+ .hero-copy{position:relative;align-self:flex-end;width:100%;max-width:100%;margin:0;padding:280px 20px 36px;box-sizing:border-box}
+ .hero h1{font-size:clamp(32px,8vw,46px);line-height:1;overflow-wrap:break-word}
 }
