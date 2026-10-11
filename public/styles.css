@@ -90,23 +90,3 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  .about-photo{height:auto;min-height:0;overflow:visible;align-self:stretch;display:flex;align-items:center;justify-content:center}
  .about-photo img{display:block;position:static;width:100%;height:auto;max-width:100%;max-height:none;object-fit:contain;object-position:center;transform:none;filter:none}
 }
-
-/* Image-safe layout: avoid absolute hero image clipping in embedded browsers. */
-.hero{isolation:isolate}
-.hero>img{z-index:0;display:block}
-.hero-shade{z-index:1;pointer-events:none}
-.hero-copy{z-index:2}
-@media(max-width:1000px){
- .hero{height:auto;min-height:0;display:grid;grid-template-columns:minmax(0,1fr);align-items:start;overflow:visible}
- .hero>img{position:relative;inset:auto;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;grid-area:1/1;z-index:0}
- .hero-shade{position:relative;inset:auto;grid-area:1/1;align-self:stretch;z-index:1;background:linear-gradient(90deg,rgba(4,3,2,.88) 0%,rgba(4,3,2,.60) 36%,transparent 75%)}
- .hero-copy{grid-area:1/1;align-self:center;margin:0;padding:100px 4% 35px;width:min(560px,100%);max-width:100%;z-index:2}
- .about-photo img{height:auto;max-height:none;object-fit:contain}
-}
-@media(max-width:650px){
- .hero{display:flex;flex-direction:column;align-items:stretch;min-height:0;overflow:visible}
- .hero>img{position:relative;inset:auto;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center}
- .hero-shade{display:none}
- .hero-copy{position:relative;align-self:stretch;margin:0;padding:24px 20px 36px;width:100%;background:#080706}
- .about-photo img{height:auto;max-height:none}
-}
