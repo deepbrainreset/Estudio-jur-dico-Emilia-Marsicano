@@ -73,3 +73,8 @@ dialog{max-height:90vh}#serviceModal>div{padding:38px 45px;overflow:auto}.modal-
  .nav{overflow:visible!important}
  .nav nav.open{visibility:visible!important}
 }
+
+/* About portrait: show the entire original image, centered at all breakpoints. */
+.about-photo{display:flex!important;align-items:center!important;justify-content:center!important;min-width:0!important;overflow:visible!important;background:#090807!important}
+.about-photo img{display:block!important;position:static!important;inset:auto!important;width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:50% 50%!important;transform:none!important;translate:none!important;scale:none!important;margin:0 auto!important;clip-path:none!important}
+@media(max-width:650px){.about-photo{width:100%!important;height:auto!important;min-height:0!important}.about-photo img{width:100%!important;height:auto!important}}
