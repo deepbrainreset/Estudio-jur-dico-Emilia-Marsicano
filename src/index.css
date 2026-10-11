@@ -140,3 +140,20 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--accent));
 }
+
+/* Responsive safety baseline: avoid viewport overflow without hiding content. */
+*, *::before, *::after { box-sizing: border-box; }
+html { width: 100%; scroll-padding-top: 5rem; }
+body, #root { min-width: 0; width: 100%; margin: 0; }
+main, section, footer, header { min-width: 0; }
+img, video, svg { max-width: 100%; }
+img, video { height: auto; }
+button, input, select, textarea { max-width: 100%; }
+@media (max-width: 640px) {
+  input, select, textarea { font-size: 16px; }
+  .grid > *, .flex > * { min-width: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}
