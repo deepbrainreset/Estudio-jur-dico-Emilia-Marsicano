@@ -1,9 +1,8 @@
-# Always revalidate the HTML entrypoint; embedded browsers must not retain old deploys.
-/index.html
-  Cache-Control: no-cache, no-store, must-revalidate
 /
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: no-cache, max-age=0, must-revalidate
+/index.html
+  Cache-Control: no-cache, max-age=0, must-revalidate
 /styles.css
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-cache, max-age=0, must-revalidate
 /app.js
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-cache, max-age=0, must-revalidate
