@@ -90,3 +90,12 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  .about-photo{height:auto;min-height:0;overflow:visible;align-self:stretch;display:flex;align-items:center;justify-content:center}
  .about-photo img{display:block;position:static;width:100%;height:auto;max-width:100%;max-height:none;object-fit:contain;object-position:center;transform:none;filter:none}
 }
+
+/* About portrait desktop: show full photo at natural aspect ratio and prevent clipping. */
+@media(min-width:651px){
+ .about{display:grid;grid-template-columns:minmax(0,38%) minmax(0,42%) minmax(0,20%);height:auto;min-height:0;align-items:stretch;overflow:visible}
+ .about-photo{display:block;width:100%;height:auto;min-height:0;overflow:visible;align-self:start}
+ .about-photo img{display:block;position:static;width:100%;height:auto;max-width:100%;max-height:none;object-fit:contain;object-position:center;transform:none;clip-path:none}
+ .about-copy{align-self:center}
+}
+@media(min-width:651px) and (max-width:1000px){.about{grid-template-columns:minmax(0,38%) minmax(0,62%)}}
