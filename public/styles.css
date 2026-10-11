@@ -83,3 +83,10 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  .hero-shade{background:linear-gradient(0deg,rgba(5,4,3,.97) 0%,rgba(5,4,3,.76) 30%,rgba(5,4,3,.08) 66%,transparent 100%)}
  .about-photo img{height:auto;max-height:none}
 }
+
+/* Desktop about portrait: preserve full image without cropping. */
+@media (min-width:1001px){
+ .about{height:auto;min-height:245px;align-items:stretch;overflow:visible}
+ .about-photo{height:auto;min-height:0;overflow:visible;align-self:stretch;display:flex;align-items:center;justify-content:center}
+ .about-photo img{display:block;position:static;width:100%;height:auto;max-width:100%;max-height:none;object-fit:contain;object-position:center;transform:none;filter:none}
+}
