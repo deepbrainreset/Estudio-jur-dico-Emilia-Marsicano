@@ -35,3 +35,49 @@ function text(){return ui[lang]||ui.es}
 function render(){const t=text();document.documentElement.lang=lang;const selector=document.querySelector('#lang');if(selector)selector.value=lang;document.querySelectorAll('[data-i]').forEach(el=>{const v=t[el.dataset.i];if(v!=null)el.innerHTML=v});if(cards){cards.innerHTML=baseServices.map((s,i)=>{const c=s[lang]||s.es;return '<article class="card reveal" data-id="'+s.id+'" style="animation-delay:'+(i*.035)+'s"><img loading="lazy" src="assets/'+s.img+'?v='+ASSET_VERSION+'" alt="'+c[0]+'"><div class="card-body"><h3>'+c[0]+'</h3><p>'+c[1]+'</p><button>'+t.more+'</button></div></article>'}).join('');cards.querySelectorAll('.card').forEach(c=>c.onclick=()=>openService(c.dataset.id))}}
 function openService(id){const s=baseServices.find(x=>x.id===id),c=s[lang]||s.es,d=(serviceDetails[id]&& (serviceDetails[id][lang]||serviceDetails[id].es))||{};document.querySelector('#modalImg').src='assets/'+s.img+'?v='+ASSET_VERSION;document.querySelector('#modalImg').alt=c[0];document.querySelector('#modalTitle').textContent=c[0];document.querySelector('#modalText').textContent=c[2];document.querySelector('#modalWho').textContent=d.who||'';document.querySelector('#modalList').innerHTML=(d.items||[]).map(x=>'<li>'+x+'</li>').join('');serviceModal.showModal()}
 document.querySelector('#lang').onchange=e=>{lang=ui[e.target.value]?e.target.value:'es';localStorage.setItem('em-lang',lang);render()};document.querySelector('#menu').onclick=()=>document.querySelector('#navlinks').classList.toggle('open');document.querySelectorAll('dialog .close').forEach(b=>b.onclick=()=>b.closest('dialog').close());document.querySelector('.modalCta').onclick=()=>{serviceModal.close();payment.showModal()};document.querySelector('#startPay').onclick=()=>payment.showModal();document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d)d.close()}));render();
+
+
+/* Consultation controls: wire both tabs and preserve the selected locale. */
+const localTab=document.querySelector('#localTab');
+const internationalTab=document.querySelector('#internationalTab');
+const localPayment=document.querySelector('#localPayment');
+const internationalPayment=document.querySelector('#internationalPayment');
+function selectPaymentRegion(region){
+ const abroad=region==='international';
+ localPayment.hidden=abroad;
+ internationalPayment.hidden=!abroad;
+ localTab.classList.toggle('active',!abroad);
+ internationalTab.classList.toggle('active',abroad);
+ localTab.setAttribute('aria-selected',String(!abroad));
+ internationalTab.setAttribute('aria-selected',String(abroad));
+}
+localTab.addEventListener('click',()=>selectPaymentRegion('local'));
+internationalTab.addEventListener('click',()=>selectPaymentRegion('international'));
+document.querySelectorAll('[data-copy]').forEach(btn=>btn.addEventListener('click',async()=>{
+ const value=btn.getAttribute('data-copy');
+ try{await navigator.clipboard.writeText(value)}catch(e){
+ const field=document.createElement('textarea');field.value=value;document.body.appendChild(field);field.select();document.execCommand('copy');field.remove();
+ }
+}));
+document.querySelector('#sendReceipt').addEventListener('click',e=>{
+ const textByLang={es:'Hola Emilia, quiero coordinar una consulta jurídica y enviar el comprobante de transferencia.',en:'Hello Emilia, I would like to book a legal consultation and send my transfer receipt.',pt:'Olá Emilia, gostaria de agendar uma consulta jurídica e enviar o comprovante de transferência.'};
+ e.currentTarget.href='https://wa.me/5491165600000?text='+encodeURIComponent(textByLang[lang]||textByLang.en);
+});
+internationalPayment.addEventListener('submit',async e=>{
+ e.preventDefault();
+ const error=document.querySelector('#paymentError');
+ error.textContent=ui[lang]?.paymentUnavailable||ui.en.paymentUnavailable;
+});
+const footerLabels={
+ es:['INICIO','SOBRE MÍ','ÁREAS DE PRÁCTICA','CÓMO TRABAJO','PREGUNTAS FRECUENTES','CONTACTO'],
+ en:['HOME','ABOUT ME','PRACTICE AREAS','HOW I WORK','FAQ','CONTACT'],
+ pt:['INÍCIO','SOBRE MIM','ÁREAS DE ATUAÇÃO','COMO TRABALHO','PERGUNTAS FREQUENTES','CONTATO']
+};
+function translateFooter(){
+ const labels=footerLabels[lang]||footerLabels.en;
+ document.querySelectorAll('footer nav a').forEach((el,i)=>{if(labels[i])el.textContent=labels[i]});
+}
+const languagePicker=document.querySelector('#lang');
+languagePicker.addEventListener('change',translateFooter);
+translateFooter();
+selectPaymentRegion('local');
